@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
     res.send('Alô mundo!');    
 });
 
+// rota para selecionar perguntas
 app.get('/perguntas', (req, res) => {
   connection.query('SELECT * FROM perguntas', (err, rows) => {
     if (err) throw err;
@@ -41,6 +42,7 @@ app.get('/perguntas', (req, res) => {
   });
 });
 
+// rota para selecionar perguntas e administração
 app.get('/perguntas_administracao', (req, res) => {
   connection.query('SELECT * FROM perguntas', (err, rows) => {
     if (err) throw err;
@@ -61,6 +63,7 @@ app.get('/perguntas_administracao', (req, res) => {
   });
 });
 
+// rota para selecionar usuarios
 app.get('/usuarios', (req, res) => {
     connection.query('SELECT * FROM usuarios', (err, rows) => {
       if (err) throw err;
@@ -68,6 +71,7 @@ app.get('/usuarios', (req, res) => {
     });
 });
 
+// rota para login
 app.post('/login', (req, res) => {
   const login = req.body.login;
   const senha = req.body.senha;
@@ -81,6 +85,7 @@ app.post('/login', (req, res) => {
   });
 });
 
+// rota para perguntas id 
 app.get('/perguntas/:id', (req, res) => {
     const id = req.params.id;
     connection.query('SELECT * FROM perguntas WHERE id = ?', [id], (err, rows) => {
